@@ -1,3 +1,4 @@
+var fullNameMaxLength = 10;
 var Employee = /** @class */ (function () {
     function Employee() {
         this._fullName = "";
@@ -7,6 +8,9 @@ var Employee = /** @class */ (function () {
             return this._fullName;
         },
         set: function (newName) {
+            if (newName && newName.length > fullNameMaxLength) {
+                throw new Error("Full name has reached the maximum length " + fullNameMaxLength);
+            }
             this._fullName = newName;
         },
         enumerable: false,
@@ -15,5 +19,6 @@ var Employee = /** @class */ (function () {
     return Employee;
 }());
 var emp1 = new Employee();
-emp1.fullName = "Arunima Gupta";
-console.log(emp1.fullName);
+emp1.fullName = "Arunima";
+if (emp1.fullName)
+    console.log(emp1.fullName);
